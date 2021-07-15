@@ -6,7 +6,7 @@ import BlogpostModel from "./schema.js"
 
 const blogpostsRouter = express.Router()
 
-blogpostsRouter.get("/", JWTAuthMiddleware, adminOnly, async (req, res, next) => {
+blogpostsRouter.get("/", JWTAuthMiddleware, async (req, res, next) => {
   try {
     const blogposts = await BlogpostModel.find().populate("users")
     res.send(blogposts)

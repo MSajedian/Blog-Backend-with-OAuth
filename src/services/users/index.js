@@ -103,12 +103,11 @@ usersRouter.post("/refreshToken", async (req, res, next) => {
 
 // GOOGLE LOGIN STUFF
 
-usersRouter.get("/googleLogin", passport.authenticate("google", {scope: ["profile", "email"]})) // This endpoint redirects automagically to Google
+usersRouter.get("/googleLogin", passport.authenticate("google", { scope: ["profile", "email"] })) // This endpoint redirects automagically to Google
 
-usersRouter.get("/googleRedirect", passport.authenticate("google"), async(req,res,next) => {
+usersRouter.get("/googleRedirect", passport.authenticate("google"), async (req, res, next) => {
   try {
-    console.log(req.user)
-    res.send("OK")
+    res.redirect(`http://localhost:3000?accessToken=${req.user.tokens.accessToken}&refreshToken=${req.user.tokens.refreshToken}`)
   } catch (error) {
     next(error)
   }
