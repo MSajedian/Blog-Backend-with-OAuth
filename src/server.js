@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import listEndpoints from 'express-list-endpoints'
 import passport from 'passport'
+import cors from 'cors'
 import oauth from './auth/oauth.js'
 
 import usersRouter from './services/users/index.js'
@@ -17,7 +18,7 @@ const port = process.env.PORT
 server.use(express.json())
 server.use(passport.initialize())
 
-// server.use(cors())
+server.use(cors('http://localhost:3000'))
 
 // ******** ROUTES ************
 

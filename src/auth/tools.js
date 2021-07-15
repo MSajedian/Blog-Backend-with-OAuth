@@ -4,9 +4,9 @@ import UserModel from "../services/users/schema.js"
 
 export const JWTAuthenticate = async user => {
   const accessToken = await generateJWT({ _id: user._id })
-
+  console.log('accessToken:', accessToken)
   const refreshToken = await generateRefreshJWT({ _id: user._id })
-
+  console.log('refreshToken:', refreshToken)
   // refresh token is saved in db
 
   user.refreshToken = refreshToken

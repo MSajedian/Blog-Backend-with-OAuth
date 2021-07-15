@@ -10,7 +10,7 @@ const UserSchema = new Schema(
     name: { type: String, required: true, },
     surname: { type: String, required: true, },
     email: { type: String, required: true, lowercase: true, },
-    password: { type: String, required: true },
+    password: { type: String },
     role: { type: String, required: true, enum: ["Admin", "User"] },
     // age: { type: Number, min: [18, "You are too young!"], max: 65, default: 18, },
     // professions: [String],
